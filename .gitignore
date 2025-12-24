@@ -1,0 +1,8 @@
+.env
+.env.dev
+.env.local
+bin/
+tmp/
+.DS_Store
+vendor/
+coverage.out

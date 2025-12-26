@@ -262,7 +262,7 @@ paths:
               type: string
             type: object
       security:
-      - ApiKeyAuth: []
+      - BearerAuth: []
       summary: Create a new todo
       tags:
       - todos
@@ -377,6 +377,7 @@ paths:
       - todos
 securityDefinitions:
   BearerAuth:
+    description: Type "Bearer" followed by a space and JWT token, or just the token.
     in: header
     name: Authorization
     type: apiKey

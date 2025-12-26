@@ -20,12 +20,15 @@ func AuthMiddleware() gin.HandlerFunc {
 		}
 
 		parts := strings.Split(authHeader, " ")
-		if len(parts) != 2 || parts[0] != "Bearer" {
+		tokenString := ""
+		if len(parts) == 2 && parts[0] == "Bearer" {
+			tokenString = parts[1]
+		} else if len(parts) == 1 {
+			tokenString = parts[0]
+		} else {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Invalid authorization header format"})
 			return
 		}
-
-		tokenString := parts[1]
 		secret := os.Getenv("JWT_SECRET")
 		if secret == "" {
 			secret = "secret"

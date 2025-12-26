@@ -210,7 +210,7 @@ const docTemplate = `{
             "post": {
                 "security": [
                     {
-                        "ApiKeyAuth": []
+                        "BearerAuth": []
                     }
                 ],
                 "description": "Create a new todo with the input payload",
@@ -588,6 +588,7 @@ const docTemplate = `{
     },
     "securityDefinitions": {
         "BearerAuth": {
+            "description": "Type \"Bearer\" followed by a space and JWT token, or just the token.",
             "type": "apiKey",
             "name": "Authorization",
             "in": "header"

@@ -36,7 +36,7 @@ func NewTodoHandler(svc domain.TodoService) *TodoHandler {
 // @Tags todos
 // @Accept  json
 // @Produce  json
-// @Security ApiKeyAuth
+// @Security BearerAuth
 // @Param todo body CreateTodoRequest true "Create Todo"
 // @Success 201 {object} domain.Todo
 // @Failure 400 {object} map[string]string

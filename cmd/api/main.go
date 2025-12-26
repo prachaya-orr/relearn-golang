@@ -33,6 +33,7 @@ import (
 // @securityDefinitions.apikey BearerAuth
 // @in header
 // @name Authorization
+// @description Type "Bearer" followed by a space and JWT token, or just the token.
 func main() {
 	// 0. Load Environment Variables
 	envFile := flag.String("env", ".env", "Path to environment file")
@@ -124,6 +125,8 @@ func main() {
 
 	// Initializing the server in a goroutine so that
 	// it won't block the graceful shutdown handling below
+	log.Printf("Server starting on port %s", port)
+	log.Printf("Swagger documentation available at http://localhost:%s/swagger/index.html", port)
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("listen: %s\n", err)
